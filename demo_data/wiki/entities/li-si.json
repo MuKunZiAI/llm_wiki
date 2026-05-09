@@ -1,0 +1,12 @@
+{
+  "slug": "li-si",
+  "title": "李四",
+  "aliases": ["李四", "Li Si"],
+  "entity_type": "person",
+  "description": "基础架构组工程师，负责 Redis 迁移方案设计。提交了 Redis Sentinel 到 Cluster 的迁移方案初稿。",
+  "related_concepts": ["redis-cluster-migration"],
+  "source_slugs": ["backend-weekly-2026-04-20"],
+  "source_count": 1,
+  "confidence": "low",
+  "last_reviewed": "2026-04-29"
+}

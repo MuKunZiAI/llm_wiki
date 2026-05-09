@@ -1,0 +1,31 @@
+{
+  "slug": "redis-cluster-migration",
+  "title": "Redis 集群迁移",
+  "aliases": ["Redis 集群迁移", "Redis Cluster Migration", "Redis 迁移"],
+  "definition": "当前 Redis Sentinel 模式（3主3从，120GB 数据）计划迁移至 Redis Cluster 模式，按 slot 分片。架构组倾向于 Cluster（水平扩展能力），运维组倾向于保持 Sentinel（运维更简单，当前规模不需要分片）。",
+  "key_points": [
+    "当前：Redis Sentinel 模式，3主3从，120GB 数据",
+    "目标：Redis Cluster 模式，按 slot 分片",
+    "迁移窗口：5月中旬",
+    "风险：多 key 命令不可用、客户端需支持 Cluster 协议重定向",
+    "决策待定：等待 CTO 确认"
+  ],
+  "contradictions": [
+    "分歧：架构组推荐 Redis Cluster（适合水平扩展场景，来源：架构组）",
+    "分歧：运维组推荐 Redis Sentinel（运维更简单，来源：运维组）"
+  ],
+  "my_position": "",
+  "source_slugs": [
+    "backend-weekly-2026-04-20"
+  ],
+  "source_count": 3,
+  "confidence": "medium",
+  "evolution_log": [
+    {
+      "date": "2026-04-24",
+      "summary": "强化：第17周李四提交 Redis Cluster 迁移方案初稿，架构组与运维组存在分歧",
+      "source_slug": "backend-weekly-2026-04-20"
+    }
+  ],
+  "last_reviewed": "2026-04-29"
+}

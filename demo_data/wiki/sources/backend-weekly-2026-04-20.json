@@ -1,0 +1,30 @@
+{
+  "slug": "backend-weekly-2026-04-20",
+  "title": "后端组周报 2026年第17周",
+  "source_url": "",
+  "domain": "internal",
+  "canonical_source": "",
+  "raw_file": "demo_data/weekly_reports/backend-weekly-2026-04-20.md",
+  "raw_sha256": "abc123def456",
+  "summary": "2026年第17周后端组周报，涵盖支付中心迁移后续、连接池超时排查进展（已定位Hikari 5.x版本bug）、Redis集群迁移计划讨论（Cluster vs Sentinel分歧）、traceId全链路追踪需求、UAT环境SSL证书到期风险。",
+  "key_concepts": [
+    "payment-center-migration",
+    "connection-pool-timeout",
+    "hikari",
+    "redis-cluster-migration",
+    "trace-id",
+    "ssl-certificate-expiry"
+  ],
+  "key_entities": [
+    "zhang-san",
+    "zhao-liu",
+    "li-si",
+    "wang-wu",
+    "hikari",
+    "redis"
+  ],
+  "contradictions": [],
+  "possibly_outdated": false,
+  "last_verified": "2026-04-29",
+  "date": "2026-04-24"
+}

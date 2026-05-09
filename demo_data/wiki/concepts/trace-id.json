@@ -1,0 +1,27 @@
+{
+  "slug": "trace-id",
+  "title": "traceId 全链路追踪",
+  "aliases": ["traceId", "全链路追踪", "分布式追踪"],
+  "definition": "产品组要求实现 traceId 贯穿 API 网关 → 后端服务 → 数据库查询的全链路追踪能力，技术选型尚未完成。",
+  "key_points": [
+    "接入层：Nginx 生成或透传 X-Trace-Id",
+    "后端服务：通过 SLF4J MDC 传递",
+    "数据库：通过 SQL 注释注入 traceId（需 DBA 评估性能影响）",
+    "技术选型未完成，处于方案设计阶段"
+  ],
+  "contradictions": [],
+  "my_position": "",
+  "source_slugs": [
+    "backend-weekly-2026-04-20"
+  ],
+  "source_count": 1,
+  "confidence": "low",
+  "evolution_log": [
+    {
+      "date": "2026-04-24",
+      "summary": "新增：产品组提出 traceId 全链路追踪需求，初步方案讨论中",
+      "source_slug": "backend-weekly-2026-04-20"
+    }
+  ],
+  "last_reviewed": "2026-04-29"
+}

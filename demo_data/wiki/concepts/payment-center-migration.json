@@ -1,0 +1,27 @@
+{
+  "slug": "payment-center-migration",
+  "title": "支付中心迁移",
+  "aliases": ["支付中心迁移", "Payment Center Migration", "支付中心搬迁"],
+  "definition": "支付中心从旧集群 IDC-A 迁移至新集群 IDC-B，API 网关路由已切换完成。迁移涉及 Hikari 连接池从 4.x 升级到 5.x，迁移后观察到连接池偶发超时。",
+  "key_points": [
+    "旧集群：IDC-A，Hikari 4.x，connectionTimeout=30s，maximumPoolSize=20",
+    "新集群：IDC-B，Hikari 5.0.10，connectionTimeout=10s（默认），maximumPoolSize=20",
+    "迁移后出现连接池超时，根因已定位为 Hikari 5.0.10 bug",
+    "2025年Q3 做过迁移前性能基准测试，数据已归档"
+  ],
+  "contradictions": [],
+  "my_position": "",
+  "source_slugs": [
+    "backend-weekly-2026-04-20"
+  ],
+  "source_count": 3,
+  "confidence": "medium",
+  "evolution_log": [
+    {
+      "date": "2026-04-24",
+      "summary": "强化：第17周支付中心迁移完成，连接池超时问题已定位并修复",
+      "source_slug": "backend-weekly-2026-04-20"
+    }
+  ],
+  "last_reviewed": "2026-04-29"
+}

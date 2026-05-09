@@ -1,0 +1,52 @@
+# RAG + Wiki 混合架构 — 依赖
+# 全部使用 Python 标准库即可运行（TF-IDF 模式）。
+# 以下为可选增强依赖：
+
+# 向量嵌入增强（可选，安装后自动切换）
+# sentence-transformers>=2.0.0
+
+# 如需更好的中文分词效果（可选）
+# jieba>=0.42.0
+
+
+项目结构
+
+rag-wiki-hybrid/
+├── app.py                  # 主入口（交互 / 单次查询 / 演示）
+├── demo.py                 # 非交互式演示脚本
+├── requirements.txt        # 依赖（零外部依赖即可运行）
+├── demo_data/
+│   ├── weekly_reports/
+│   │   └── backend-weekly-2026-04-20.md    # 周报原始文档
+│   └── wiki/
+│       ├── concepts/        # 5 个概念卡片（连接池超时、Hikari、Redis迁移、支付中心迁移、traceId）
+│       ├── sources/         # 1 个来源档案
+│       └── entities/        # 3 个实体卡片（张三、赵六、李四）
+├── src/
+│   ├── config.py            # 全局配置
+│   ├── wiki/                # Wiki 知识图谱模块
+│   │   ├── schema.py        #   数据模型（Concept/Source/Entity/EvolutionEntry）
+│   │   ├── store.py         #   JSON 持久化存储
+│   │   └── search.py        #   多策略检索（slugs/aliases/全文）
+│   ├── rag/                 # RAG 向量检索模块
+│   │   ├── chunker.py       #   文档切分器
+│   │   ├── embeddings.py    #   嵌入层（TF-IDF 零依赖 / sentence-transformers 可选）
+│   │   ├── vector_store.py  #   向量存储 + 余弦相似度
+│   │   └── retriever.py     #   RAG 检索管线
+│   └── hybrid/              # 混合查询引擎
+│       ├── engine.py        #   核心决策逻辑（Wiki 优先 → RAG 兜底）
+│       └── annotator.py     #   来源标注器（Wiki/RAG/矛盾 分层标注）
+运行方式
+
+cd rag-wiki-hybrid
+python -X utf8 demo.py                    # 运行 5 个预设演示场景
+python -X utf8 app.py -q "你的问题"         # 单次查询
+python -X utf8 app.py                      # 交互模式
+
+5 个演示场景（全部基于同一份周报）
+场景	问题	合并策略	效果
+A	SSL 证书什么时候到期？	rag_fallback	Wiki 无概念页，RAG 从原始文档返回，标注 !! 未经 Wiki 验证
+B	连接池超时排查进展如何？	wiki_skeleton_rag_supplement	Wiki 返回 Evolution Log（3周排查演进）+ 备选根因分裂记录
+C	Redis 用集群版还是哨兵？	wiki_skeleton_rag_supplement	Contradictions 节展示 Cluster vs Sentinel 两种观点
+D	支付中心迁移后连接池配置怎么调整？	wiki_skeleton_rag_supplement	通过 connection-pool-timeout → hikari → payment-center 关系链串联
+E	Hikari 连接池超时的根因是什么？	wiki_skeleton_rag_supplement	Evolution Log 展示：怀疑 → 确认 → 解决

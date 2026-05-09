@@ -1,0 +1,12 @@
+{
+  "slug": "zhao-liu",
+  "title": "赵六",
+  "aliases": ["赵六", "Zhao Liu"],
+  "entity_type": "person",
+  "description": "SRE 工程师，负责连接池超时排查和 SSL 证书管理。持续三周追踪 Hikari 超时问题直至定位根因。",
+  "related_concepts": ["connection-pool-timeout", "hikari", "ssl-certificate-expiry"],
+  "source_slugs": ["backend-weekly-2026-04-20"],
+  "source_count": 1,
+  "confidence": "low",
+  "last_reviewed": "2026-04-29"
+}

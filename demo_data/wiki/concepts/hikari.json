@@ -1,0 +1,27 @@
+{
+  "slug": "hikari",
+  "title": "HikariCP 连接池",
+  "aliases": ["Hikari", "HikariCP", "Hikari 连接池"],
+  "definition": "项目使用的数据库连接池组件。在支付中心迁移过程中从 4.x 升级到 5.x，发现 5.0.10 版本存在与 PostgreSQL 驱动的兼容性 bug（#1234），connectionTimeout 默认值从 30s 变为 10s。升级至 5.0.14 并调整 connectionTimeout=30s 后问题解决。",
+  "key_points": [
+    "4.x → 5.x：connectionTimeout 默认值从 30s 变为 10s",
+    "5.0.10 存在 PostgreSQL 兼容性 bug",
+    "5.0.14 修复了该 bug",
+    "推荐配置：connectionTimeout=30s，maximumPoolSize=20"
+  ],
+  "contradictions": [],
+  "my_position": "",
+  "source_slugs": [
+    "backend-weekly-2026-04-20"
+  ],
+  "source_count": 3,
+  "confidence": "medium",
+  "evolution_log": [
+    {
+      "date": "2026-04-22",
+      "summary": "修正：确认 Hikari 5.0.10 bug 导致连接池超时，5.0.14 修复",
+      "source_slug": "backend-weekly-2026-04-20"
+    }
+  ],
+  "last_reviewed": "2026-04-29"
+}

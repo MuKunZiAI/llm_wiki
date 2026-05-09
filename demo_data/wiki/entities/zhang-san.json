@@ -1,0 +1,12 @@
+{
+  "slug": "zhang-san",
+  "title": "张三",
+  "aliases": ["张三", "Zhang San"],
+  "entity_type": "person",
+  "description": "后端组开发工程师，负责支付中心迁移，周报整理人。",
+  "related_concepts": ["payment-center-migration"],
+  "source_slugs": ["backend-weekly-2026-04-20"],
+  "source_count": 1,
+  "confidence": "low",
+  "last_reviewed": "2026-04-29"
+}

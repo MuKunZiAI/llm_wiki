@@ -1,0 +1,40 @@
+{
+  "slug": "connection-pool-timeout",
+  "title": "连接池超时",
+  "aliases": ["连接池超时", "Connection Pool Timeout", "Hikari 超时"],
+  "definition": "支付中心迁移至新集群后观察到的连接池超时问题，根因确认是 Hikari 5.0.10 与 PostgreSQL 驱动的兼容性 bug，升级至 5.0.14 并调整 connectionTimeout 为 30s 后解决。",
+  "key_points": [
+    "根因：Hikari 5.x connectionTimeout 默认值从 30s 变为 10s",
+    "Hikari 5.0.10 存在与 PostgreSQL 驱动的兼容性 bug（#1234）",
+    "修复方案：升级到 Hikari 5.0.14，connectionTimeout=30s",
+    "数据库端 wait_timeout 已排除（MySQL 8h >> connectionTimeout）",
+    "从怀疑到确认经历三周排查（第17周怀疑 → 第18周确认 → 第19周解决）"
+  ],
+  "contradictions": [
+    "备选根因已排除：数据库端 wait_timeout 也可能导致相同症状，经验证 MySQL wait_timeout=8h，远大于连接池超时时间，于第18周排除"
+  ],
+  "my_position": "",
+  "source_slugs": [
+    "backend-weekly-2026-04-20"
+  ],
+  "source_count": 3,
+  "confidence": "medium",
+  "evolution_log": [
+    {
+      "date": "2026-04-20",
+      "summary": "强化：第17周发现支付中心迁移后连接池偶发超时，初步怀疑 Hikari 版本升级导致",
+      "source_slug": "backend-weekly-2026-04-20"
+    },
+    {
+      "date": "2026-04-21",
+      "summary": "修正：定位 connectionTimeout 默认值变更（30s→10s），临时调整后超时频率从15%降至3%",
+      "source_slug": "backend-weekly-2026-04-20"
+    },
+    {
+      "date": "2026-04-22",
+      "summary": "修正：确认根因为 Hikari 5.0.10 PostgreSQL 兼容性 bug，排除数据库 wait_timeout 假说",
+      "source_slug": "backend-weekly-2026-04-20"
+    }
+  ],
+  "last_reviewed": "2026-04-29"
+}
